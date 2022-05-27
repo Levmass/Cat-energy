@@ -1457,6 +1457,9 @@ body {
   text-transform: uppercase;
   color: #111111;
 }
+.contacts__item:first-child {
+  margin: 0px 87px 0px 0px;
+}
 .contacts__street {
   font-size: 16px;
   line-height: 20px;
@@ -1500,6 +1503,9 @@ body {
   }
   .contacts__city {
     text-align: right;
+  }
+  .contacts__item:first-child {
+    margin: 0px 0px 0px 0px;
   }
 }
 @media (max-width: 600px) {
