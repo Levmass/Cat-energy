@@ -1,0 +1,661 @@
+.selection {
+    overflow: hidden;
+    &__content {
+        margin: 70px 0px 0px 0px;
+    }
+
+    &__title {
+        font-size: 60px;
+        line-height: 60px;
+        color: #000000;
+        margin: 0px 0px 56px 0px;
+    }
+
+    &__subtitle {
+        font-size: 20px;
+        line-height: 30px;
+        max-width: 350px;
+        text-transform: uppercase;
+        color: #000000;
+        margin: 0px 0px 66px 0px;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 0px 70px 0px;
+    }
+
+    &__column {
+        max-width: 568px;
+        flex: 1 0 50%;
+    }
+
+    &__item {
+        display: flex;
+        max-width: 570px;
+        &:not(:last-child) {
+            margin: 0px 0px 20px 0px;
+        }
+        label {
+            display: block;
+            max-height: 30px;
+            width: 120px;
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: uppercase;
+            color: #444444;
+            margin: auto 12px auto 0px;
+        }
+    }
+
+    &__text {
+        border: 1px solid #E7E7E7;
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 20px;
+        line-height: 30px;
+        text-transform: uppercase;
+        color: #444444;
+        &:hover {
+            border: 1px solid #CDCDCD;
+        }
+        &:focus {
+            border: 2px solid #444444;
+        }
+    }
+
+    &__check {
+        padding: 24px 28px;
+        border: 1px solid #E7E7E7;
+    }
+
+    &__check-item {
+        &:not(:last-child) {
+            margin: 0px 0px 13px 0px;
+        }
+        label {
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: uppercase;
+            color: #222222;
+            margin: auto 0px auto 0px;
+            transition: all 0.2s ease 0s;
+            &:hover {
+                cursor: pointer;
+            }
+            &:active {
+                opacity: 0.3;
+            }
+        }
+    }
+    @media (max-width:1200px) {
+        &__form {
+            flex-direction: column;
+        }
+        &__column {
+            max-width: 100%;
+        }
+        &__content {
+            padding: 0px 50px;
+        }
+        &__item {
+            &:last-child {
+                margin: 0px 0px 70px 0px;
+            }
+            max-width: 100%;
+        }
+        &__title {
+            margin: 0px 0px 56px -50px;
+        }
+    }
+    @media (max-width:727px) {
+        &__form {
+            margin: 0px 0px 27px 0px;
+        }
+        &__title {
+            font-size: 36px;
+            line-height: 36px;
+            margin: 0px 0px 37px 0px;
+        }
+        &__content {
+            padding: 0px 0px;
+            margin: 27px 0px 0px 0px;
+        }
+        &__subtitle {
+            font-size: 14px;
+            line-height: 18px;
+            margin: 0px 0px 39px 0px;
+            max-width: 240px;
+        }
+        &__item {
+            &:not(:last-child) {
+                margin: 0px 0px 12px 0px;
+            }
+            &:last-child {
+                margin: 0px 0px 27px 0px;
+            }
+            label {
+                max-height: 18px;
+                width: 100px;
+                min-width: 80px;
+                font-size: 16px;
+                line-height: 18px;
+                margin: auto 14px auto 0px;
+            }
+        }
+        &__text {
+            padding: 14px 14px;
+            font-size: 16px;
+            line-height: 18px;
+        }
+        &__check {
+            padding: 20px 0px;
+            border: none;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 120%;
+                height: 1px;
+                background: #D9D9D9;
+                margin: 0px -20px;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 120%;
+                height: 1px;
+                background: #D9D9D9;
+                margin: 0px -20px;
+            }
+        }
+        &__check-item {
+            &:not(:last-child) {
+                margin: 0px 0px 13px 0px;
+            }
+            label {
+                font-size: 16px;
+                line-height: 18px;
+                margin: auto 0px auto 0px;
+            }
+        }
+    }
+}
+.selection__checkbox {
+    transition: all 0.2s ease 0s;
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.selection__checkbox+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+.selection__checkbox+label::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #CDCDCD;
+    border-radius: 50%;
+    margin: 0px 20px 0px 0px;
+    @media (max-width:727px) {
+        margin: 0px 15px 0px 0px;
+        width: 30px;
+        height: 30px;
+    }
+}
+/* стили при наведении курсора на радио */
+.selection__checkbox:not(:disabled):not(:checked)+label:hover::before {
+    border: 1px solid #BABABA;
+}
+/* стили для активной радиокнопки (при нажатии на неё) */
+.selection__checkbox:not(:disabled):active+label::before {
+    opacity: 0.3;
+}
+/* стили для радиокнопки, находящейся в состоянии checked */
+.selection__checkbox:checked+label::before {
+    background: url("../img/icons/radiobutton-active.svg") no-repeat center;
+    background-size: 18px 18px;
+    @media (max-width:727px) {
+        background-size: 13.5px 13.5px;
+    }
+}
+
+
+// /* стили для радиокнопки, находящейся в фокусе */
+// .selection__checkbox:focus+label::before {
+//     border: 1px solid #BABABA;
+// }
+// /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+// .selection__checkbox:focus:not(:checked)+label::before {
+//     border-color: #80bdff;
+// }
+// /* стили для радиокнопки, находящейся в состоянии disabled */
+// .selection__checkbox:disabled+label::before {
+//     background-color: #e9ecef;
+// }
+
+.title {
+    display: inline-block;
+    font-size: 36px;
+    line-height: 36px;
+    color: #000000;
+    padding: 10px 40px;
+    background: #fff;
+    @media (max-width:727px) {
+        font-size: 24px;
+        line-height: 26px;
+        padding: 10px 15px 10px 20px;
+    }
+}
+
+.contactdetails {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 35px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #68B738;
+        z-index: -1;
+    }
+    &__content {
+        margin: 0px 0px 70px 0px;
+    }
+
+    &__title {
+        margin: 0px 0px 76px -40px;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__column {
+        flex: 1 0 50%;
+        max-width: 568px;
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        max-width: 100%;
+        label {
+            display: block;
+            max-height: 30px;
+            width: 85px;
+            min-width: 85px;
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: uppercase;
+            color: #444444;
+            margin: auto 12px auto 0px;
+        }
+    }
+
+    &__text {
+        border: 1px solid #E7E7E7;
+        width: 100%;
+        padding: 10px 50px 10px 20px;
+        font-size: 20px;
+        line-height: 30px;
+        text-transform: uppercase;
+        color: #444444;
+        &:hover {
+            border: 1px solid #CDCDCD;
+        }
+        &:focus {
+            border: 2px solid #444444;
+        }
+    }
+    &__icon {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translate(0%, -50%);
+        svg line, svg path {
+            stroke: #222;
+        }
+    }
+    &__text:focus+&__icon {
+        svg line, svg path {
+            stroke: #68B738;
+        }
+    }
+    &__icon.fail {
+        svg line, svg path {
+            stroke: #FF8282;
+        }
+    }
+    &__text:focus+&__icon.fail {
+        svg line, svg path {
+            stroke: #FF8282;
+        }
+    }
+    @media (max-width:1200px) {
+        &__form {
+            flex-direction: column;
+        }
+    
+        &__column {
+            flex: 1 0 100%;
+            max-width: 100%;
+            &:not(:last-child) {
+                margin: 0px 0px 20px 0px;
+            }
+        }
+        &__content {
+            padding: 0px 50px;
+        }
+    }
+    @media (max-width:727px) {
+        & {
+            &::before {
+                top: 27px;
+                left: 0;
+            }
+        }
+        &__content {
+            padding: 0px 0px;
+            margin: 0px 0px 27px 0px;
+        }
+        &__title {
+            margin: 0px 0px 32px -20px;
+        }
+        &__item {
+            label {
+                max-height: 18px;
+                width: 68px;
+                min-width: 68px;
+                font-size: 16px;
+                line-height: 18px;
+                margin: auto 12px auto 0px;
+            }
+        }
+        &__text {
+            padding: 15px 50px 15px 15px;
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+}
+
+.comments {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 35px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #68B738;
+        z-index: -1;
+    }
+    &__content {
+        margin: 0px 0px 67px 0px;
+    }
+
+    &__title {
+        margin: 0px 0px 76px -40px;
+    }
+
+    &__textarea {
+        textarea {
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: uppercase;
+            color: #444444;
+            border: 1px solid #E7E7E7;
+            padding: 10px 20px;
+            &:hover {
+                border: 1px solid #CDCDCD;
+            }
+            &:focus {
+                border: 2px solid #444444;
+            }
+        }
+        width: 100%;
+        height: 174px;
+    }
+    @media (max-width:1200px) {
+        &__content {
+            padding: 0px 50px;
+        }
+    }
+    @media (max-width:727px) {
+        & {
+            &::before {
+                top: 27px;
+                left: 0;
+            }
+        }
+        &__content {
+            padding: 0px 0px;
+            margin: 0px 0px 27px 0px;
+        }
+        &__title {
+            margin: 0px 0px 34px -20px;
+        }
+        &__textarea {
+            textarea {
+                font-size: 16px;
+                line-height: 18px;
+                padding: 15px;
+            }
+            height: 150px;
+        }
+    }    
+}
+
+.extra {
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 35px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #68B738;
+        z-index: -1;
+    }    
+    &__content {
+        margin: 0px 0px 82px 0px;
+    }
+
+    &__title {
+        margin: 0px 0px 57px -40px;
+    }
+
+    &__form {}
+
+    &__column {
+        display: flex;
+        flex-wrap: wrap;
+        &:first-child {
+            margin: 0px 0px 60px 0px;
+        }
+    }
+
+    &__item {
+        flex: 1 0 25%;
+        label {
+            font-size: 20px;
+            line-height: 30px;
+            text-transform: uppercase;
+            color: #000000;
+            &:hover {
+                cursor: pointer;
+            }
+            &:active {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    &__checkbox {}
+
+    &__button {
+        margin: 0px 81px 0px 0px;
+    }
+
+    &__btn {
+        padding: 13px 195px;
+        background: #68B738;
+        span {
+            font-size: 20px;
+            line-height: 20px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+        &:hover {
+            cursor: pointer;
+            background: #5EAA2F;
+        }
+        &:active {
+            span {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    &__note {
+        font-family: 'Arial';
+        font-style: normal;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000000;
+        margin: auto 0px;
+    }
+    @media (max-width:1200px) {
+        &__content {
+            padding: 0px 50px;
+        }
+        &__column {
+            &:first-child {
+                margin: 0px 0px 54px 0px;
+            }
+        }
+        &__item {
+            flex: 1 0 50%;
+            &:nth-child(1), &:nth-child(2) {
+                margin: 0px 0px 37px 0px;
+            }
+        }
+        &__button {
+            margin: 0px 72px 0px 0px;
+        }
+        &__btn {
+            padding: 13px 55px;
+            background: #68B738;
+        }
+    }
+    @media (max-width:727px) {
+        & {
+            &::before {
+                top: 27px;
+                left: 0;
+            }
+        }
+        &__content {
+            padding: 0px 0px;
+            margin: 0px 0px 32px 0px;
+        }
+        &__title {
+            margin: 0px 0px 34px -20px;
+        }
+        &__item {
+            flex: 1 0 100%;
+            &:nth-child(1),
+            &:nth-child(2) {
+                margin: 0px 0px 13px 0px;
+            }
+            &:not(:last-child) {
+                margin: 0px 0px 13px 0px;
+            }
+            label {
+                font-size: 16px;
+                line-height: 18px;
+            }
+        }
+        &__column {
+            flex-direction: column;
+            &:first-child {
+                margin: 0px 0px 34px 0px;
+            }
+        }
+        &__button {
+            width: 100%;
+            margin: 0px auto 21px auto;
+        }
+        &__btn {
+            width: 100%;
+            span {
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+        &__note {
+            font-size: 14px;
+            line-height: 16px;
+            margin: 0px auto;
+        }
+    }
+}
+.extra__checkbox {
+    transition: all 0.2s ease 0s;
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.extra__checkbox+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+.extra__checkbox+label::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #CDCDCD;
+    margin: 0px 20px 0px 0px;
+    @media (max-width:727px) {
+        margin: 0px 15px 0px 0px;
+        width: 30px;
+        height: 30px;
+    }
+}
+/* стили при наведении курсора на радио */
+.extra__checkbox:not(:disabled):not(:checked)+label:hover::before {
+    border: 1px solid #BABABA;
+}
+/* стили для активной радиокнопки (при нажатии на неё) */
+.extra__checkbox:not(:disabled):active+label::before {
+    opacity: 0.3;
+}
+/* стили для радиокнопки, находящейся в состоянии checked */
+.extra__checkbox:checked+label::before {
+    background: url("../img/icons/check-icon.png") no-repeat center;
+    background-size: 18px 14px;
+    // @media (max-width:727px) {
+    //     background-size: 13.5px 13.5px;
+    // }
+}
