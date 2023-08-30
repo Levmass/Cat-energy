@@ -689,6 +689,9 @@ body {
 .catalogs__button:active {
   opacity: 0.3;
 }
+.catalogs__btn {
+  color: #000000;
+}
 @media (max-width: 1200px) {
   .catalogs__subtitle {
     width: 370px;
@@ -1457,9 +1460,6 @@ body {
   text-transform: uppercase;
   color: #111111;
 }
-.contacts__item:first-child {
-  margin: 0px 87px 0px 0px;
-}
 .contacts__street {
   font-size: 16px;
   line-height: 20px;
@@ -1503,9 +1503,6 @@ body {
   }
   .contacts__city {
     text-align: right;
-  }
-  .contacts__item:first-child {
-    margin: 0px 0px 0px 0px;
   }
 }
 @media (max-width: 600px) {
@@ -2496,18 +2493,6 @@ body {
   -webkit-transform: translate(0%, -50%);
           transform: translate(0%, -50%);
 }
-.contactdetails__icon svg line, .contactdetails__icon svg path {
-  stroke: #222;
-}
-.contactdetails__text:focus + .contactdetails__icon svg line, .contactdetails__text:focus + .contactdetails__icon svg path {
-  stroke: #68B738;
-}
-.contactdetails__icon.fail svg line, .contactdetails__icon.fail svg path {
-  stroke: #FF8282;
-}
-.contactdetails__text:focus + .contactdetails__icon.fail svg line, .contactdetails__text:focus + .contactdetails__icon.fail svg path {
-  stroke: #FF8282;
-}
 @media (max-width: 1200px) {
   .contactdetails__form {
     -webkit-box-orient: vertical;
@@ -2864,17 +2849,11 @@ body {
 .footer__socials-icon {
   margin: auto 0px 0px 0px;
 }
-.footer__socials-icon:hover {
-  cursor: pointer;
-}
-.footer__socials-icon:hover svg path {
-  fill: #68B738;
-}
 .footer__socials-icon:nth-child(1) {
   width: 30px;
   height: 22px;
 }
-.footer__socials-icon:nth-child(1) svg {
+.footer__socials-icon:nth-child(1) img {
   width: 100%;
   height: 100%;
 }
@@ -2882,7 +2861,7 @@ body {
   width: 23px;
   height: 23px;
 }
-.footer__socials-icon:nth-child(2) svg {
+.footer__socials-icon:nth-child(2) img {
   width: 100%;
   height: 100%;
 }
@@ -2890,13 +2869,13 @@ body {
   width: 28px;
   height: 33px;
 }
-.footer__socials-icon:nth-child(3) svg {
+.footer__socials-icon:nth-child(3) img {
   width: 100%;
   height: 100%;
 }
-.footer__socials-icon:nth-child(3):hover svg path {
-  stroke: #68B738;
-  fill: none;
+.footer__socials-icon:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 .footer__socials-icon:active {
   opacity: 0.6;
@@ -2909,9 +2888,7 @@ body {
 }
 .footer__logo-2:hover {
   cursor: pointer;
-}
-.footer__logo-2:hover svg path {
-  fill: #68B738;
+  opacity: 0.8;
 }
 .footer__logo-2:active {
   opacity: 0.6;
