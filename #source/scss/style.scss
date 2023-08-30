@@ -369,6 +369,11 @@ body {
             opacity: 0.3;
         }
     }
+
+    &__btn {
+        color: #000000;
+    }
+
     @media (max-width:1200px) {
         &__subtitle {
             width: 370px;
